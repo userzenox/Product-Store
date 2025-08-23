@@ -1,0 +1,3 @@
+how to configure daisy ui 
+
+-- first configure 

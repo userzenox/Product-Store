@@ -56,3 +56,9 @@ we are using Postgre SQL as our database and it is provided by "neon"
 
  get various online images: unsplash 
      : \https://unsplash.com/s/photos/earbuds 
+
+
+
+ <tailwind> - version 3.47 is used
+
+ for this we set up the tailwind and then use  -- daisyUI. -- version 4 is used    
