@@ -1,0 +1,9 @@
+
+  "helmet" - is a security middleware that helps you protect your app by setting various http headers
+
+
+  "Morgan"  - will log the http requests to the console
+
+  "API"  - it allows two different applications to talk to each other.
+
+  here we do api calling between the server and the database.
