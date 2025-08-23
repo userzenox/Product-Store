@@ -1,14 +1,26 @@
 import { useState } from 'react'
+import HomePage from "./pages/HomePage"
+import ProductPage from "./pages/ProductPage";
 
-
+import {Routes, Route} from "react-router-dom"
+import Navbar from "./components/Navbar"
+import { useThemeStore } from './store/useThemeStore';
 
 function App() {
-  const [count, setCount] = useState(0)
+   const {theme} = useThemeStore()
 
   return (
-   <>
-     <h1 className="text-red-300"> hello</h1>
-   </>
+    <div className='min-h-screen bg-base-200 transition-colors duration-300' data-theme={theme}>
+        
+        <Navbar /> 
+
+        <Routes>
+            <Route path='/' element={<HomePage />} /> 
+            <Route path='/product/:id' element={<ProductPage />} /> 
+            
+        </Routes>
+
+    </div>
   )
 }
 

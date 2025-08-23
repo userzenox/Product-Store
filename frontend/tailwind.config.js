@@ -1,22 +1,27 @@
-// tailwind.config.js
-const daisyui = require("daisyui");
+import daisyui from "daisyui";
 
-module.exports = {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
   },
   plugins: [daisyui],
   daisyui: {
     themes: [
-      "light",         // default
-      "dark",          // dark mode
-      "cupcake",       // pastel
-      "dracula",       // dark purple
-      // Add more themes as you like from DaisyUI's list
-    ]
-  }
-}
+      "pastel",
+      "retro",
+      "coffee",
+      "forest",
+      "cyberpunk",
+      "synthwave",
+      "luxury",
+      "autumn",
+      "valentine",
+      "aqua",
+      "business",
+      "night",
+      "dracula",
+    ],
+  },
+};
