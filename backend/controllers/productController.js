@@ -49,7 +49,7 @@ export const getProduct = async(req,res) => {
     } catch (error) {
         console.log("Error in get Product " , error);
         
-        res.status(500).json({ success: false , messsage:"Internal server Error"});     
+        res.status(500).json({ success: false , message:"Internal server Error"});     
     }
 
 };
@@ -67,7 +67,7 @@ export const updateProduct = async(req,res) => {
         `
 
         if(updateProduct.length === 0){
-            return res.status(404).json({ success: false , messsage:"Product not found"});    
+            return res.status(404).json({ success: false , message:"Product not found"});    
         }
 
          res.status(200).json({success: true , data: updateProduct[0]} );
@@ -75,7 +75,7 @@ export const updateProduct = async(req,res) => {
     } catch (error) {
          console.log("Error in Update Product " , error);
         
-        res.status(500).json({ success: false , messsage:"Internal server Error"});     
+        res.status(500).json({ success: false , message:"Internal server Error"});     
     }
 };
 
@@ -84,16 +84,16 @@ export const deleteProduct = async(req,res) => {
       
       try {
          const deletedProduct = await  sql`
-            DELETE FROM products WHERE id=${id} RETURING *
+            DELETE FROM products WHERE id=${id} RETURNING *
           `;
          
           if(deletedProduct.length === 0){
-               return  res.status(404).json({ success: false , messsage:"Product not found"});
+               return  res.status(404).json({ success: false , message:"Product not found"});
           }
          
       } catch (error) {
           console.log("Error in deleting Product " , error);
         
-        res.status(500).json({ success: false , messsage:"Internal server Error"});
+        res.status(500).json({ success: false , message:"Internal server Error"});
       }
 };
