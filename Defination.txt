@@ -11,3 +11,6 @@
    
    "Toaster" - its used to show pop ups
 
+
+   "dialog" of html
+
