@@ -2,6 +2,7 @@ import {create} from 'zustand';
 import axios from 'axios'
 
 const BASE_URL = "http://localhost:3000"
+
 export const useProductStore = create((set,get) => ({
      products:[],
      loading: false,
@@ -11,22 +12,36 @@ export const useProductStore = create((set,get) => ({
         set({loading: true});
 
         try {
-            await axios.get(`${BASE_URL}/api/products`)
-          // axios will fetch the data and return in response.data and the other data is what we return 
-            console.log("working");
+            const response =  await axios.get(`${BASE_URL}/api/products`)
+          // axios will fetch the data and return in response.data and the other data is what we return    
             
-            set({products:response.data.data , error:null});
-        } catch (error) {
+         set({products:response.data.data , error:null});
+        } 
+        catch (error) {
             // error 429 means rate limiting
             if(error.status == 429){
-                 set({error:"Rate limit exceeded"});
+                 set({error:"Rate limit exceeded" , products:[]} );
             }
             else{
-                set({error:"something went wrong"})
+                set({error:"something went wrong" , products:[]})
             }
         }
         finally{
             set({loading: false})
         }
+     },
+
+     deleteProduct: async (id) => {
+         set({loading: true});
+
+         try {
+            await axios.delete(`${BASE_URL}/api/products/${id}`);
+
+            set(prev => ({products: prev.products.filter(product => product.id !== id)}));
+         } catch (error) {
+             console.log("Error in deleteProduct function" , error);
+              
+             
+         }
      }
 }))

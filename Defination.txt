@@ -7,3 +7,7 @@
   "API"  - it allows two different applications to talk to each other.
 
   here we do api calling between the server and the database.
+
+   
+   "Toaster" - its used to show pop ups
+
