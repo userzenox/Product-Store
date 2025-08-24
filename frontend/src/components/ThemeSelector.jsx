@@ -42,6 +42,7 @@ function ThemeSelector() {
               {themeOption.colors.map((color, i) => (
                 <span key={i} className="size-2 rounded-full" style={{ backgroundColor: color }} />
               ))}
+              
             </div>
           </button>
         ))}

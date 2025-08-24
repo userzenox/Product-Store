@@ -1,4 +1,4 @@
-import arcjet, {tokenBucket} from "@arcjet/node";
+import arcjet, { tokenBucket, shield, detectBot } from "@arcjet/node";
 
 import dotenv from "dotenv";
 

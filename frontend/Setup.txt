@@ -1,3 +1,21 @@
 how to configure daisy ui 
 
--- first configure 
+-- first in tailwinf.config import it and then add the plugins.
+
+
+zustand - used to create global scope.
+
+npm i zustand then create a folder store and then file and write 
+  // src/store/useStore.js
+import create from 'zustand';
+
+export const useStore = create((set) => ({
+  globalVar: 'initial value',
+  setGlobalVar: (value) => set({ globalVar: value }),
+}));
+
+then import it 
+import { useStore } from './store/useStore'; 
+
+and use it 
+ const globalVar = useStore((state) => state.globalVar);

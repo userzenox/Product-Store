@@ -6,7 +6,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import productRoutes from "./routes/productRoutes.js"
 import {sql} from "./config/db.js"
-
+import {aj} from "./lib/arcjet.js"
+dotenv.config();
 
 const app = express();
 
@@ -34,7 +35,7 @@ app.use(async (req,res,next) => {
        }
 
        // check for spoofedBots - a bot that acts like not a bot
-       if(decision.result.some((result) => result.reason.isBot() && result.reason.isSpoofed() )){
+       if(decision.results.some((result) => result.reason.isBot() && result.reason.isSpoofed() )){
             res.status(403).json({error:"Spoofed bot detected"});
             return;
        }
@@ -74,10 +75,14 @@ async function initDB(){
                price DECIMAL(10,2) NOT NULL,
                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
           )`;
+
+
       console.log("database initialised");
       
        } catch (error) {
-          console.log("Error initDB" , error);
+          console.log(sql);
+          
+          console.log("Error initDB --" );
           
        }
 }
