@@ -12,8 +12,8 @@ import path from "path";
 
 const app = express();
 const PORT = process.env.PORT || 3000
-const __dirname =  path.resolve();
 
+const __dirname = path.resolve();
 //apply arcjet rate-limit to all routes
 
 app.use(async (req,res,next) => {
@@ -60,24 +60,21 @@ app.use(helmet({
 app.use(morgan("dev"));
 
 
-// app.get("/" , (req,res) => {
-//      res.send("hello from backend");
-// } )
+app.get("/" , (req,res) => {
+     res.send("hello from backend");
+} )
 
 
 app.use("/api/products" , productRoutes);
 
-
 if (process.env.NODE_ENV === "production") {
+  // server our react app
   app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
-  // For any other route, send back index.html so React Router can handle it
-  app.get(/(.*)/, (req, res) => {
+  app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
   });
 }
-
-
 
 async function initDB(){
        try {
@@ -95,7 +92,7 @@ async function initDB(){
        } catch (error) {
           console.log(sql);
           
-          console.log("Error initDB --" );
+          console.log("Error initDB --" , error.message);
           
        }
 }

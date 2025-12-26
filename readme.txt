@@ -3,7 +3,7 @@
 
 First create frontend and backend folder .
 
-then in terminal write npm init -y - to create a package.json file  -- it will be used while deploying our application
+Then in terminal write npm init -y - to create a package.json file  -- it will be used while deploying our application
 
 without cd into backend 
 in the root dirctory install differnt packages
